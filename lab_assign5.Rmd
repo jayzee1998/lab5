@@ -1,0 +1,39 @@
+```{r}
+Bet <- function(N){
+  a <- 0
+  for (i in 1 : N) {
+
+  outcome <- replicate(4, sample(1 : 6, 1))
+  if (sum(outcome == 6) >= 1){
+    a = a + 1
+    }
+  }
+  return(a / N)
+}
+Bet(1000)
+Bet(10000)
+```
+
+```{r}
+fin_sma <- function(x){
+  uni_x <- unique(x)
+  
+  a <- rep(NA, length(uni_x))
+  
+  for (i in 1 : length(uni_x)) {
+    
+   a[i] = sum(uni_x[i] <= uni_x)
+   
+  }
+ 
+
+  min_v <- x[a == length(uni_x)]
+
+  index = which(x == min_v)
+  min_v2 <- rep(min_v, length(index))
+  return(data.frame(index = index, min = min_v2))
+}
+
+fin_sma(c(3,5,7,8,9,5,32,1,1,0))
+```
+
